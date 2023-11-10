@@ -59,7 +59,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateHealthBarScale()
     {
-        // Adjust health bar to relevant size based on damage
+        // Adjust health bar to relevant size based on damaget
         float healthPercent = (float)health / maxHealth;
         healthBar.localScale = new Vector3(healthPercent, 0.1f, 0.1f);
     }
