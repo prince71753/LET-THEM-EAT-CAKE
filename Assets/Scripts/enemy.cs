@@ -6,47 +6,50 @@ public class EnemyMovement : MonoBehaviour
     private float moveSpeed;
     public int damage = 1;
     private int health;
-    public Transform healthBar; // Make the health bar public so you can assign it in the Inspector.
+    private int maxHealth; 
+    public Transform healthBar; // Assign this in the Inspector
+    public int cakeDamage = 10; // Damage the enemy takes from a cake hit
 
     private void Start()
     {
-        // Set enemy characteristics based on the specified type.
         SetEnemyCharacteristics();
     }
 
     void Update()
     {
-        // Move the enemy forward along the Z-axis.
         transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-
-        // Update the health bar's scale based on the health.
         UpdateHealthBarScale();
     }
 
     private void SetEnemyCharacteristics()
     {
+        // Set characteristics based on enemy type
         switch (enemyType)
         {
             case 'a':
                 moveSpeed = 1.0f;
                 damage = 1;
-                health = 1;
+                health = 10;
+                maxHealth = 10; 
                 break;
             case 'b':
                 moveSpeed = 1.2f;
                 damage = 2;
-                health = 3;
+                health = 20;
+                maxHealth = 20; 
                 break;
             case 'c':
                 moveSpeed = 0.5f;
                 damage = 10;
-                health = 10;
+                health = 30;
+                maxHealth = 30; 
                 break;
             default:
                 Debug.LogWarning("Invalid enemy type. Using default characteristics for 'a'.");
                 moveSpeed = 3.0f;
                 damage = 1;
-                health = 1;
+                health = 10;
+                maxHealth = 10; 
                 break;
         }
 
@@ -56,10 +59,29 @@ public class EnemyMovement : MonoBehaviour
 
     private void UpdateHealthBarScale()
     {
-        // Calculate the new scale of the health bar cube on the X-axis based on health.
-        float newScaleX = Mathf.Clamp01((float)health / 10f); // Assuming max health is 10.
+        // Adjust health bar to relevant size based on damage
+        float healthPercent = (float)health / maxHealth;
+        healthBar.localScale = new Vector3(healthPercent, 0.1f, 0.1f);
+    }
 
-        // Update the health bar's scale.
-        healthBar.localScale = new Vector3(newScaleX, 0.1f, 0.1f);
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Cake"))
+        {
+            TakeDamage(cakeDamage);
+            Destroy(collision.gameObject); // Destroy the cake on impact
+        }
+    }
+
+    private void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+        UpdateHealthBarScale();
+        if (health <= 0)
+        {
+            Destroy(gameObject); // Destroy enemy if health is depleted
+        }
     }
 }
+
+
