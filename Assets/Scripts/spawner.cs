@@ -3,7 +3,9 @@ using Random = UnityEngine.Random;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    public GameObject spawnPrefab;
+    public GameObject man;
+    public GameObject woman;
+    private GameObject spawnPrefab;
     public float spawnInterval = 1f;
     public float minX = -2f;
     public float maxX = 2f;
@@ -23,7 +25,15 @@ public class ObjectSpawner : MonoBehaviour
 
             // Determine the "Enemy Type" based on the score and randomness
             char enemyType = GetRandomEnemyType();
-
+            
+             if(Random.value < 0.5f){
+                spawnPrefab = man;
+                spawnPrefab.name = "peasant";
+                } else{
+                spawnPrefab = woman;
+                spawnPrefab.name = "peasant";
+                }
+    
             // Create a new enemy GameObject
             GameObject enemy = Instantiate(spawnPrefab, spawnPosition, Quaternion.identity);
 
