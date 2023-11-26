@@ -66,10 +66,12 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.name == "peasant"){
         if (collision.gameObject.CompareTag("Cake"))
         {
             TakeDamage(cakeDamage);
             Destroy(collision.gameObject); // Destroy the cake on impact
+        }
         }
     }
 
