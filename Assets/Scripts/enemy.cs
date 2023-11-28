@@ -28,19 +28,19 @@ public class EnemyMovement : MonoBehaviour
         switch (enemyType)
         {
             case 'a':
-                moveSpeed = 1.0f;
+                moveSpeed = 20f;
                 damage = 1;
                 health = 10;
                 maxHealth = 10; 
                 break;
             case 'b':
-                moveSpeed = 1.2f;
+                moveSpeed = 10f;
                 damage = 2;
                 health = 20;
                 maxHealth = 20; 
                 break;
             case 'c':
-                moveSpeed = 0.5f;
+                moveSpeed = 5f;
                 damage = 10;
                 health = 30;
                 maxHealth = 30; 
@@ -68,13 +68,13 @@ public class EnemyMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Hello, Unity!");
-        // if(collision.gameObject.name == "peasant"){
+        
             if (collision.gameObject.CompareTag("Cake"))
             {
                 TakeDamage(cakeDamage);
                 Destroy(collision.gameObject); // Destroy the cake on impact
             }
-        // }
+
     }
 
     private void TakeDamage(int damageAmount)
