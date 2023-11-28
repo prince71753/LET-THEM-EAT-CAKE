@@ -1,3 +1,4 @@
+// using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -66,13 +67,14 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "peasant"){
-        if (collision.gameObject.CompareTag("Cake"))
-        {
-            TakeDamage(cakeDamage);
-            Destroy(collision.gameObject); // Destroy the cake on impact
-        }
-        }
+        Debug.Log("Hello, Unity!");
+        // if(collision.gameObject.name == "peasant"){
+            if (collision.gameObject.CompareTag("Cake"))
+            {
+                TakeDamage(cakeDamage);
+                Destroy(collision.gameObject); // Destroy the cake on impact
+            }
+        // }
     }
 
     private void TakeDamage(int damageAmount)

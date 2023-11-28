@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18331864, g: 0.22894442, b: 0.306239, a: 1}
+  m_IndirectSpecularColor: {r: 0.18331902, g: 0.22894515, b: 0.3062398, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2658,7 +2658,7 @@ Transform:
   m_GameObject: {fileID: 1282032640}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -2}
+  m_LocalPosition: {x: 0, y: 0.98, z: -2}
   m_LocalScale: {x: 5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3426,6 +3426,7 @@ MonoBehaviour:
   cakePrefab: {fileID: 5679238331954363232, guid: 0bf8759c7ffc046fb86ee118b49d44c5,
     type: 3}
   shootingForce: 1500
+  shootingCooldown: 0.1
 --- !u!1001 &1809812583
 PrefabInstance:
   m_ObjectHideFlags: 0
