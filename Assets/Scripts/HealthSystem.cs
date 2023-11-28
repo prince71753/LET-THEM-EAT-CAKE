@@ -4,7 +4,7 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     public GameObject healthBar; // Assign the cube representing the health bar in the Inspector.
-    private float currentHealth = 300f; // Initial health value.
+    private float currentHealth = 100f; // Initial health value.
 
     private void OnCollisionEnter(Collision collision)
     {
