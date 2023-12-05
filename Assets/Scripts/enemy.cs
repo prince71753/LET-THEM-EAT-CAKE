@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     private int health;
     private int maxHealth; 
     public Transform healthBar; // Assign this in the Inspector
-    public int cakeDamage = 10; // Damage the enemy takes from a cake hit
+    public int cakeDamage = 5; // Damage the enemy takes from a cake hit
 
     private void Start()
     {
@@ -28,22 +28,22 @@ public class EnemyMovement : MonoBehaviour
         switch (enemyType)
         {
             case 'a':
-                moveSpeed = 20f;
+                moveSpeed = 10f;
                 damage = 1;
-                health = 10;
-                maxHealth = 10; 
+                health = 50;
+                maxHealth = 50; 
                 break;
             case 'b':
-                moveSpeed = 10f;
+                moveSpeed = 5f;
                 damage = 2;
-                health = 20;
-                maxHealth = 20; 
+                health = 60;
+                maxHealth = 60; 
                 break;
             case 'c':
-                moveSpeed = 5f;
+                moveSpeed = 2.5f;
                 damage = 10;
-                health = 30;
-                maxHealth = 30; 
+                health = 90;
+                maxHealth = 90; 
                 break;
             default:
                 Debug.LogWarning("Invalid enemy type. Using default characteristics for 'a'.");
@@ -62,6 +62,7 @@ public class EnemyMovement : MonoBehaviour
     {
         // Adjust health bar to relevant size based on damaget
         float healthPercent = (float)health / maxHealth;
+        Debug.Log("THIS MY PERCENT:" + healthPercent);
         healthBar.localScale = new Vector3(healthPercent, 0.1f, 0.1f);
     }
 
@@ -71,18 +72,20 @@ public class EnemyMovement : MonoBehaviour
         
             if (collision.gameObject.CompareTag("Cake"))
             {
-                TakeDamage(cakeDamage);
                 Destroy(collision.gameObject); // Destroy the cake on impact
+                TakeDamage(cakeDamage);
             }
 
     }
 
     private void TakeDamage(int damageAmount)
     {
+        Debug.Log("I have" + health);
         health -= damageAmount;
         UpdateHealthBarScale();
         if (health <= 0)
         {
+            Debug.Log("I will die as i have" + health);
             Destroy(gameObject); // Destroy enemy if health is depleted
         }
     }

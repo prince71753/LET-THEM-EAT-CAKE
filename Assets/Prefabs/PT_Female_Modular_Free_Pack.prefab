@@ -1693,7 +1693,7 @@ MonoBehaviour:
   enemyType: 97
   damage: 1
   healthBar: {fileID: 0}
-  cakeDamage: 10
+  cakeDamage: 1
 --- !u!54 &5383273813276468153
 Rigidbody:
   m_ObjectHideFlags: 0

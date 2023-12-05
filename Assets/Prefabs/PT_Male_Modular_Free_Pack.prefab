@@ -428,7 +428,7 @@ MonoBehaviour:
   enemyType: 97
   damage: 1
   healthBar: {fileID: 0}
-  cakeDamage: 10
+  cakeDamage: 1
 --- !u!65 &870402006307859263
 BoxCollider:
   m_ObjectHideFlags: 0
